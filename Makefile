@@ -25,9 +25,11 @@ GOPATH=$(shell go env GOPATH)
 GOOS=$(shell go env GOOS)
 GOBIN=$(shell pwd)/bin
 
-REGISTRY?=gcr.io/k8s-staging-provider-aws
+# REGISTRY?=gcr.io/k8s-staging-provider-aws
+REGISTRY?=registry.kloudlite.io/kloudlite
 IMAGE?=$(REGISTRY)/aws-ebs-csi-driver
-TAG?=$(GIT_COMMIT)
+TAG=latest
+# TAG?=$(GIT_COMMIT)
 
 OUTPUT_TYPE?=docker
 
