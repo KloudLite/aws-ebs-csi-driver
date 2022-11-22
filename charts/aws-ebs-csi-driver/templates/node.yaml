@@ -116,7 +116,7 @@ spec:
             - name: ADDRESS
               value: /csi/csi.sock
             - name: DRIVER_REG_SOCK_PATH
-              value: {{ printf "%s/plugins/ebs.csi.aws.com/csi.sock" (trimSuffix "/" .Values.node.kubeletPath) }}
+              value: {{ printf "%s/plugins/%s/csi.sock" (trimSuffix "/" .Values.node.kubeletPath) .Values.driverName }}
             {{- if .Values.proxy.http_proxy }}
             {{- include "aws-ebs-csi-driver.http-proxy" . | nindent 12 }}
             {{- end }}
@@ -173,7 +173,7 @@ spec:
             type: Directory
         - name: plugin-dir
           hostPath:
-            path: {{ printf "%s/plugins/ebs.csi.aws.com/" (trimSuffix "/" .Values.node.kubeletPath) }}
+            path: {{ printf "%s/plugins/%s/" (trimSuffix "/" .Values.node.kubeletPath) .Values.driverName}}
             type: DirectoryOrCreate
         - name: registration-dir
           hostPath:

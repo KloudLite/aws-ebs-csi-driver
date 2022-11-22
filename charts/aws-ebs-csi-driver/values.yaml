@@ -13,6 +13,8 @@ customLabels:
   {}
   # k8s-app: aws-ebs-csi-driver
 
+driverName: "ebs.csi.aws.com"
+
 sidecars:
   provisioner:
     env: []
